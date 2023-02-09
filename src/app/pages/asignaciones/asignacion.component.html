@@ -1,0 +1,231 @@
+<div class="col-lg-12">
+    <div class="card ">
+        <div class="card-header bg-info">
+            <h4 class="m-b-0 text-white">Asignaciones de Empleados</h4>
+        </div>
+        <div class="card-body">
+            <form action="#" class="form-horizontal"
+                  [formGroup]="formAsignacion"
+                  (ngSubmit)="crearAsignacion()">
+                <div class="form-body">
+                    <h3 class="box-title">Asignación</h3>
+                    <hr class="m-t-0 m-b-40">
+                    <h3 class="box-title title-f"><strong>Empleado Datos</strong></h3>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group row">
+                                <label class="control-label text-right col-md-4">Cédula</label>
+                                <div class="col-md-8">
+                                    <select class="form-control custom-select" 
+                                            formControlName="empleado">
+
+                                        <option value=""> Cédula..</option>
+                                        <option *ngFor="let empleado of empleados"
+                                                        [value]="empleado._id">
+                                                        {{empleado.identificacion}}
+                                        </option >
+                                        <!-- [value]="empleado._id" [disabled]=true -->
+                                    </select>
+                                    <small class="form-control-feedback"> This is inline help </small> </div>
+                            </div>
+                        </div>
+                        <!--/span-->
+                        <div class="col-md-4">
+                            <div class="form-group  row">
+                                <label class="control-label text-right col-md-4">Empleado</label>
+                                <div class="col-md-8">
+                                    <input type="text"
+                                           class="form-control"
+                                           [value]="nombreCompleto"
+                                           [disabled]="NoverEmpleado"
+                                           placeholder="Nombre">
+                                    <small class="form-control-feedback"> This field has error. </small> </div>
+                            </div>
+                        </div>
+                        <!--/span-->
+                        <div class="col-md-4">
+                            <div class="form-group row">
+                                <label class="control-label text-right col-md-4">Sueldo Mensual</label>
+                                <div class="col-md-8">
+                                    <input type="text"
+                                           class="form-control"
+                                           [value]="salarioMensual | number:'1.2-2'" 
+                                           [disabled]="NoverEmpleado"
+                                           placeholder="Sueldo">
+                                    <small class="form-control-feedback"> This field has error. </small> </div>
+                            </div>
+                        </div>
+                        <!--/span-->
+                    </div>
+                    <h3 class="box-title title-f"><strong>Salario Cotizable a la TSS: </strong> {{salarioCotizableTSS | number:'1.2-2'}} </h3>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group row">
+                                <label class="control-label text-right col-md-4">Sueldo Quincena</label>
+                                <div class="col-md-8">
+                                    <input type="number"
+                                           class="form-control"
+                                           formControlName="salario"
+                                           placeholder="Salario mensual / 2">
+                                    <small class="form-control-feedback">Salario quincenal </small> </div>
+                            </div>
+                        </div>
+                        <!--/span-->
+                        <div class="col-md-4">
+                            <div class="form-group row">
+                                <label class="control-label text-right col-md-4">Comisiones</label>
+                                <div class="col-md-8">
+                                    <input type="number"
+                                           class="form-control"
+                                           formControlName="comisiones"
+                                           placeholder="comisiones">
+                                    <small class="form-control-feedback"> This field has error. </small> </div>
+                            </div>
+                        </div>
+                        <!--/span-->
+                        <div class="col-md-4">
+                            <div class="form-group row">
+                                <label class="control-label text-right col-md-4">Vacaciones</label>
+                                <div class="col-md-8">
+                                    <input type="number"
+                                           class="form-control"
+                                           formControlName="vacaciones"
+                                           placeholder="Vacaciones">
+                                    <small class="form-control-feedback"> This field has error. </small> </div>
+                            </div>
+                        </div>
+                        <!--/span-->
+                    </div>
+                    <h3 class="box-title title-f"><strong>Otras Remuneraciones: </strong> {{otrasRemuneraciones | number:'1.2-2'}}</h3>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group row">
+                                <label class="control-label text-right col-md-4">Hora Ext. Días Feriados</label>
+                                <div class="col-md-8">
+                                    <input type="number" 
+                                           class="form-control"
+                                           formControlName="horasExtraDiasFeriados"
+                                           placeholder="horas Extra Dias Feriados">
+                                    <small class="form-control-feedback"> This is inline help </small> </div>
+                            </div>
+                        </div>
+                        <!--/span-->
+                        <div class="col-md-4">
+                            <div class="form-group row">
+                                <label class="control-label text-right col-md-4">Otros Ingresos</label>
+                                <div class="col-md-8">
+                                    <input type="number"
+                                           class="form-control"
+                                           formControlName="otrosIngresos"
+                                           placeholder="">
+                                    <small class="form-control-feedback"> This field has error. </small> </div>
+                            </div>
+                        </div>
+                        <!--/span-->
+                        <div class="col-md-4">
+                            <div class="form-group row">
+                                <label class="control-label text-right col-md-4">Bonos Trimestral</label>
+                                <div class="col-md-8">
+                                    <input type="number"
+                                           class="form-control"
+                                           formControlName="bonosTrimestrales"
+                                           placeholder="bonosTrimestrales">
+                                    <small class="form-control-feedback"> This field has error. </small> </div>
+                            </div>
+                        </div>
+                        <!--/span-->
+                    </div>
+                    <h3 class="box-title title-f"><strong>Ingresos Exentos ISR :</strong>   {{ingresosExentoISR | number:'1.2-2'}}</h3>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group row">
+                                <label class="control-label text-right col-md-4">Regalía Pascual</label>
+                                <div class="col-md-8">
+                                    <input type="number"
+                                           class="form-control"
+                                           formControlName="regaliaPascual"
+                                           placeholder="">
+                                    <small class="form-control-feedback"> This is inline help </small> </div>
+                            </div>
+                        </div>
+                        <!--/span-->
+                        <div class="col-md-4">
+                            <div class="form-group row">
+                                <label class="control-label text-right col-md-4">Indemnizaciones Laborales</label>
+                                <div class="col-md-8">
+                                    <input type="number" 
+                                           class="form-control"
+                                           formControlName="indemnizacionesLaborales" 
+                                           placeholder=" indemnizacionesLaborales">
+                                    <small class="form-control-feedback"> This field has error. </small> </div>
+                            </div>
+                        </div>
+                        <!--/span-->
+                        <div class="col-md-4">
+                            <div class="form-group row">
+                                <label class="control-label text-right col-md-4">Preaviso y Cesantía</label>
+                                <div class="col-md-8">
+                                    <input type="number"
+                                           class="form-control"
+                                           formControlName="preavisoYCesantia"
+                                           placeholder=" preavisoYCesantia">
+                                    <small class="form-control-feedback"> This field has error. </small> </div>
+                            </div>
+                        </div>
+                        <!--/span-->
+                    </div>
+                    <h3 class="box-title title-f"> <strong>Otros: </strong> </h3>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group row">
+                                <label class="control-label text-right col-md-4">Reembolso</label>
+                                <div class="col-md-8">
+                                    <input type="number" 
+                                           class="form-control"
+                                           formControlName="reembolsos"
+                                           placeholder=" reembolsos">
+                                    <small class="form-control-feedback"> This is inline help </small> </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group row">
+                                <label class="control-label text-right col-md-4">Fecha Reg.</label>
+                                <div class="col-md-8">
+                                    <input type="date" 
+                                           class="form-control"
+                                           formControlName="fechaRegistro"
+                                           placeholder="Fecha registro">
+                                </div>
+                            </div>
+                        </div>
+                        <!--/span-->
+                        <div class="col-md-4">
+                            <div class="form-group row">
+                                <label class="control-label text-right col-md-4">TOTAL </label>
+                                <div class="col-md-8">
+                                    <input type="number" 
+                                           class="form-control"
+                                           [value]="totalRenglones"
+                                           placeholder="">
+                                    <small class="form-control-feedback"> This field has error. </small> </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <button  
+                class="btn btn-danger btn-lg float-start"
+                routerLink="/nomina/asignaciones">
+                    <i class="fa fa-cancel"></i>
+                        Volver
+                </button>
+                <button type="submit" 
+                    class="btn btn-success btn-lg float-right"
+                    [disabled]="formAsignacion.invalid">
+                    <i class="fa fa-save"></i>
+                        Guardar
+                </button>
+            </form>
+        </div>
+    </div>
+</div>

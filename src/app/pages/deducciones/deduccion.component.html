@@ -1,0 +1,170 @@
+<div class="col-lg-12">
+    <div class="card ">
+        <div class="card-header bg-info">
+            <h4 class="m-b-0 text-white">Deducciones al Empleado</h4>
+        </div>
+        <div class="card-body">
+            <form action="#" class="form-horizontal"
+                   [formGroup]="formDeduccion">
+
+                <div class="form-body">
+                    <h3 class="box-title">Deducciones</h3>
+                    <hr class="m-t-0 m-b-40">
+                    <h3 class="box-title">Empleado Datos</h3>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group row">
+                                <label class="control-label text-right col-md-4">Cédula</label>
+                                <div class="col-md-8">
+                                    <select class="form-control custom-select" 
+                                            formControlName="empleado">
+
+                                        <option value=""> Cédula..</option>
+                                        <option *ngFor="let empleado of empleados"
+                                                        [value]="empleado._id">
+                                                        {{empleado.identificacion}}
+                                        </option >
+                                    </select>
+                                    <small class="form-control-feedback"> Salario Cot. TSS: {{salarioCotizableTSS | number:'1.2-2'}} </small> </div>
+                            </div>
+                        </div>
+                        <!--/span-->
+                        <div class="col-md-4">
+                            <div class="form-group  row">
+                                <label class="control-label text-right col-md-4">Empleado</label>
+                                <div class="col-md-8">
+                                    <input type="text"
+                                           class="form-control"
+                                            [value]="nombreCompleto"
+                                            [disabled]="true"
+                                           placeholder="Nombre">
+                                    <small class="form-control-feedback"> This field has error. </small> </div>
+                                    <!-- [value]="nombreCompleto"
+                                    [disabled]="NoverEmpleado" -->
+                            </div>
+                        </div>
+                        <!--/span-->
+                        <div class="col-md-4">
+                            <div class="form-group row">
+                                <label class="control-label text-right col-md-4">Sueldo Mensual</label>
+                                <div class="col-md-8">
+                                    <input type="text"
+                                           class="form-control"
+                                           [value]="salarioMensual | number:'1.2-2'"
+                                           [disabled]="true"
+                                           placeholder="Sueldo">
+                                    <small class="form-control-feedback"> Salario Cot. TSS: {{salarioCotizableISR| number:'1.2-2'}} </small> </div>
+                                    <!-- [value]="salarioMensual | number:'1.2-2'" 
+                                    [disabled]="NoverEmpleado" -->
+                            </div>
+                        </div>
+                        <!--/span-->
+                    </div>
+                    <h3 class="box-title">Retenciones de Ley        {{retencionLeyTotal | number:'1.2-2'}} </h3>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group row">
+                                <label class="control-label text-right col-md-4">SFS</label>
+                                <div class="col-md-8">
+                                    <input type="number"
+                                           class="form-control"
+                                           formControlName="sfs"
+                                           placeholder="sfs">
+                                    <small class="form-control-feedback">Seguro familiar de salud. </small> </div>
+                            </div>
+                        </div>
+                        <!--/span-->
+                        <div class="col-md-4">
+                            <div class="form-group row">
+                                <label class="control-label text-right col-md-4">AFP</label>
+                                <div class="col-md-8">
+                                    <input type="number"
+                                           class="form-control"
+                                           formControlName="afp"
+                                           placeholder="afp">
+                                    <small class="form-control-feedback"> Administradora de fondos de pensiones. </small> </div>
+                            </div>
+                        </div>
+                        <!--/span-->
+                        <div class="col-md-4">
+                            <div class="form-group row">
+                                <label class="control-label text-right col-md-4">Ret. ISR</label>
+                                <div class="col-md-8">
+                                    <input type="number"
+                                           class="form-control"
+                                           formControlName="retISR"
+                                           placeholder="ISR">
+                                    <small class="form-control-feedback"> Impuesto sobre la renta. </small> </div>
+                            </div>
+                        </div>
+                        <!--/span-->
+                        <div class="col-md-4">
+                            <div class="form-group row">
+                                <label class="control-label text-right col-md-4">Dep. TSS</label>
+                                <div class="col-md-8">
+                                    <input type="number"
+                                           class="form-control"
+                                           formControlName="depAdicTSS" 
+                                           placeholder="Dep. TSS">
+                                    <small class="form-control-feedback"> Tesorería de seguridad social. </small> </div>
+                            </div>
+                        </div>
+                        <!--/span-->
+                    </div>
+                    <h3 class="box-title">Otras Deducciones {{otrasDeducciones | number:'1.2-2'}}</h3>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group row">
+                                <label class="control-label text-right col-md-4">CxC Empleado</label>
+                                <div class="col-md-8">
+                                    <input type="number" 
+                                           class="form-control"
+                                           formControlName="cxc"
+                                           placeholder="cxc">
+                                    <small class="form-control-feedback"> This is inline help </small> </div>
+                            </div>
+                        </div>
+                        <!--/span-->
+                        <div class="col-md-4">
+                            <div class="form-group row">
+                                <label class="control-label text-right col-md-4">Otros descuentos</label>
+                                <div class="col-md-8">
+                                    <input type="number"
+                                           class="form-control"
+                                           formControlName="otroDesc"
+                                           placeholder="">
+                                    <small class="form-control-feedback"> This field has error. </small> </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group row">
+                                <label class="control-label text-right col-md-4">TOTAL </label>
+                                <div class="col-md-8">
+                                    <input type="number" 
+                                           class="form-control"
+                                           [value]="totalRenglones"
+                                           placeholder="">
+                                    <small class="form-control-feedback"> This field has error. </small> </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <button  
+                class="btn btn-danger btn-lg float-start"
+                routerLink="/nomina/deducciones">
+                    <i class="fa fa-cancel"></i>
+                        Volver
+                </button>
+                <button type="submit" 
+                    class="btn btn-success btn-lg float-right"
+                    [disabled]="formDeduccion.invalid"
+                    (click)="crearDeduccion()">
+                    <i class="fa fa-save"></i>
+                        Guardar
+                </button>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,59 @@
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="text-left">
+                            <button class="btn btn-primary"
+                                    (click)="prepararNomina()"
+                                    [disabled]="isPreparar">
+                                <i class="fa fa-hospital-o"></i>
+                                <!-- <i class="fa-solid fa-circle-dashed"></i> -->
+                                Preparar Nómina
+                            </button>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="text-right">
+                            <button class="btn btn-primary"
+                                    (click)="generarNomina()"
+                                    [disabled] = "isGenerar">
+                                <i class="fa fa-hospital-o"></i>
+                                <!-- <i class="fa-solid fa-circle-dashed"></i> -->
+                                Generar Nómina
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Cedula</th>
+            <th>Nombre</th>
+            <th>Asignación</th>
+            <th>Deducción</th>
+            <th>Neto a Pagar</th>
+            <th class="text-nowrap">Acciones</th>   
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let item of nominaresumen">
+            <td>{{item.identificacion}}</td>
+            <td>{{item.nombre}}</td>
+            <td>{{item.asignacion | number:'3.2-2'}}</td>
+            <td>{{item.deduccion  | number:'3.2-2'}}</td>
+            <td>{{item.netoapagar | number:'3.2-2'}}</td>
+            <td class="text-nowrap text-center">
+                <a [routerLink]="['/nomina/prcnomina', item.IdProcess,item.identificacion]">
+                    <i class="fa fa-search text-inverse m-r-10"></i> 
+                </a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+ 

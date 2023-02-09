@@ -1,0 +1,116 @@
+<div class="col-lg-12">
+    <div class="card">
+        <div class="card-header bg-info">
+            <h4 class="m-b-0 text-white">Empleado</h4>
+        </div>
+        <div class="card-body">
+            <form [formGroup]="formNomina">
+                <div class="form-body">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <h4>Empleado</h4>
+                            <label>Cédula</label>
+                            <input type="text" class="form-control"
+                                   formControlName="Id">
+                            
+                            <label>Nombre</label>
+                            <input type="text" class="form-control"
+                                    formControlName="Nombre">
+                            
+                            <label>Salario</label>
+                            <input type="text" class="form-control"
+                                   formControlName="Salario">
+                        </div>
+                        <div class="col-md-4">
+                            <h4>Asignación</h4>
+                            <label>Salario</label>
+                            <input type="number" class="form-control"
+                                   formControlName="SueldoQincenal">
+                            
+                            <label>Comisiones</label>
+                            <input type="number" class="form-control"
+                                    formControlName="Comision">
+
+                            <label>Vacaciones</label>
+                            <input type="number" class="form-control"
+                                    formControlName="Vacaciones">
+                            <hr>
+                            <label>Horas Extras y Días Feriados</label>
+                            <input type="number" class="form-control"
+                            formControlName="Extras">
+                            
+                            <label>Otros ingresos</label>
+                            <input type="number" class="form-control"
+                            formControlName="Otros">
+
+                            <label>Bonos</label>
+                            <input type="number" class="form-control"
+                            formControlName="Bonos">
+                            <hr>
+                            <label>Regalía Pascual</label>
+                            <input type="number" class="form-control"
+                            formControlName="RegaliaPascual">
+
+                            <label>Indemnizaciones Laborales</label>
+                            <input type="number" class="form-control"
+                            formControlName="IndemnizacionesLaborales">
+
+                            <label>preaviso Y Cesantia</label>
+                            <input type="number" class="form-control"
+                            formControlName="PreavisoYCesantia">
+                            <hr>
+                            <label>Reembolsos</label>
+                            <input type="number" class="form-control"
+                            formControlName="Reembolsos">
+
+                            <label> Total Asignación</label>
+                            <input type="number" class="form-control"
+                            formControlName="TotalAsig">
+                        </div>
+                        <div class="col-md-4">
+                            <h4>Deducción</h4> 
+                            <label> Seguro Familiar de Salud</label>
+                            <input type="number" class="form-control"
+                            formControlName="SFS">
+
+                            <label>Administradora Fonde Pensiones</label>
+                            <input type="number" class="form-control"
+                                    formControlName="AFP">
+
+                            <label>Adiccional TSS</label>
+                            <input type="number" class="form-control"
+                                    formControlName="adicTSS">
+
+                            <label>Retención ISR</label>
+                            <input type="number" class="form-control"
+                                    formControlName="ISR">
+                            <hr>
+                            <label>CxC empleado</label>
+                            <input type="number" class="form-control"
+                                    formControlName="CxC">
+
+                            <label>Seguro complementario</label>
+                            <input type="number" class="form-control"
+                                    formControlName="OtrosDesc">
+
+                            <label>Total Deducción</label>
+                            <input type="number" class="form-control"
+                                    formControlName="TotalDed">
+                        </div>
+                    </div>
+                </div>
+                <button class="btn btn-danger btn-lg float-start"
+                        routerLink="/nomina/prcnomina">
+                    <i class="fa fa-cancel"></i>
+                    Retornar
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- <div>
+    <pre *ngIf="nominaDetail">
+        {{nominaDetail |json}}
+    </pre>
+</div> -->

@@ -1,0 +1,99 @@
+<div class="row animated fadIn fast">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <input type="text"
+                class="form-control"
+                placeholder="Buscar x código..."
+                (keyup)="buscar(txtTermino.value)"
+                #txtTermino/>
+
+            </div>
+        </div>
+    </div>
+</div> 
+
+<div class="row animated fadIn fast"
+     *ngIf="cargando">
+
+    <div class="col-12">
+        <div class="alert alert-info text-center">
+            <h4 class="alert-heading">Cargando</h4>
+            <i class="fa fa-spin fa-refresh fa-2x"></i>
+            <p class="mb-0">Por favor espere</p>
+        </div>
+    </div>
+</div>
+
+<div class="row"
+     *ngIf="!cargando">
+
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-8">
+                        <h4 class="card-title">Bloques </h4>
+                        <h6 class="card-subtitle">Bloques registrados en mi aplicación</h6>
+                    </div>
+                    <div class="col">
+                        <div class="text-right">
+                            <button class="btn btn-primary" routerLink="/nomina/bloque/nuevo"
+                            >
+                                <i class="fa fa-hospital-o"></i>
+                                Crear bloque
+                            </button>
+                        </div>
+                    </div>
+                </div>
+               
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>No.</th>
+                                <th>Código</th>
+                                <th>Tipo</th>
+                                <th>Ubicación</th>
+                                <th>Cuota Asignada</th>
+                                <!-- <th>Fecha Sal</th> -->
+                                <th class="text-nowrap">Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let bloque of bloques; let i=index">
+                                <td>{{i+1}}</td>
+                                <td>{{bloque.codigo}}</td>
+                                <td>{{bloque.tipo}}</td>
+                                <td>{{bloque.ubicacion }}</td>
+                                <td>{{bloque.cuota | number:'1.2-2'}}</td>
+                                <!-- <td></td> -->
+
+                                <td class="text-nowrap text-center">
+                                    <a [routerLink]="['/nomina/bloque', bloque._id]"
+                                       data-toggle="tooltip"
+                                       data-original-title="Editar">
+                                        <i class="fa fa-pencil text-inverse m-r-10"></i> 
+                                    </a>
+                                    <a class="cursor" 
+                                       data-toggle="tooltip" 
+                                       data-original-title="Borrar"
+                                       (click)="eliminarBloque(bloque)"> 
+                                       <i class="fa fa-close text-danger"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                            
+                        </tbody>
+                    </table>
+
+                <button class="btn btn-secundary" (click)="TestFecha()">Anteriores</button>
+                &nbsp;
+                <button class="btn btn-secundary">Siguientes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div> 
+

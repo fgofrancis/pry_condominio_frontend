@@ -1,0 +1,147 @@
+
+<div class="row">
+    <!-- Fecha  -->
+    <div class="col-6">
+        <div class="card">
+            <h1>Fecha  proceso</h1>
+            <div class="card-body">
+                <div class="form-group">
+                    <div class="input-group">
+                        <input type="date" class="form-control" (change)="capturarFechaOnChange($event)"
+                               [(ngModel)]="fechacuotas"/> 
+                               <!-- [valueAsDate]="fechapago"/> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Tipo de cuota a Generar-->
+    <!-- <div class="col-3">
+        <div class="card">
+            <h1>Tipo cuota a generar</h1>
+            <div class="card-body">
+                <div class="form-group">
+                    <div class="input-group">
+                        <input type="ration" class="form-control" /> 
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> -->
+    <!-- Ver cuotas Generadas -->
+    <div class="col-6">
+        <div class="card">
+            <div class="card-body" *ngIf="isverApartamentos">
+                <form class="form p-t-20"
+                     [formGroup]="apartamentoForm"
+                     (ngSubmit)="guardarApartamento()">
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Apartamentos</label>
+                        <div class="input-group">
+                            <select class="form-control" 
+                                    formControlName="codigo">
+                                <option [value]="1">
+                                    Todos..
+                                </option>
+                                <option *ngFor="let apartamento of apartamentos"
+                                    [value]="apartamento._id">
+                                    {{apartamento.codigo}}
+                                </option>
+                            </select>
+                        </div>
+                    </div>
+                </form>
+    
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row animated fadIn fast"
+     *ngIf="cargando">
+
+    <div class="col-12">
+        <div class="alert alert-info text-center">
+            <h4 class="alert-heading">Cargando</h4>
+            <i class="fa fa-spin fa-refresh fa-2x"></i>
+            <p class="mb-0">Por favor espere</p>
+        </div>
+    </div>
+</div>
+
+<div class="row"
+     *ngIf="!cargando">
+
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-8">
+                        <h4 class="card-title">Cuotas </h4>
+                        <h6 class="card-subtitle">Cuotas generadas para el mes de xx/xx/xxxx</h6>
+                    </div>
+                    <div class="col">
+                        <div class="text-right">
+                            <button class="btn btn-primary" 
+                                    (click)="generarCuota('fechacuota')"
+                                    [disabled]="isbtnGenerarProceso">
+                                <i class="fa fa-hospital-o"></i>
+                                Generar Cuotas
+                            </button>
+                        </div>
+                    </div>
+                </div>
+               
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>No.</th>
+                                <th>Apartamento</th>
+                                <th>Fecha generación</th>
+                                <th>Fecha cuota</th>
+                                <th>Cuota Monto</th>
+                                <th>Cuota Saldo</th>
+                                <!-- <th>Fecha Sal</th> -->
+                                <th class="text-nowrap">Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let cuota of cuotas; let i =index">
+                                <td>{{i +1 }}</td>
+                                <td>{{cuota.idapartamento.codigo}}</td>
+                                <td>{{cuota.fechageneracion |date:'dd/MM/YYYY' }}</td>
+                                <td>{{cuota.fechacuota |date:'dd/MM/YYYY' }}</td>
+                                <td>{{cuota.monto | number:'1.2-2'}}</td>
+                                <td>{{cuota.saldo | number:'1.2-2'}}</td>
+                                <!-- <td></td> -->
+
+                                <!-- <td class="text-nowrap text-center">
+                                    <a [routerLink]="['/nomina/bloque', bloque._id]"
+                                       data-toggle="tooltip"
+                                       data-original-title="Editar">
+                                        <i class="fa fa-pencil text-inverse m-r-10"></i> 
+                                    </a>
+                                    <a class="cursor" 
+                                       data-toggle="tooltip" 
+                                       data-original-title="Borrar"
+                                       (click)="eliminarBloque(bloque)"> 
+                                       <i class="fa fa-close text-danger"></i>
+                                    </a>
+                                </td> -->
+                            </tr>
+                            
+                        </tbody>
+                    </table>
+
+                <button class="btn btn-secundary">Anteriores</button>
+                &nbsp;
+                <button class="btn btn-secundary">Siguientes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div> 
+
+

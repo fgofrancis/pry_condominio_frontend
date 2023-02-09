@@ -1,0 +1,74 @@
+
+<div class="row">
+
+    <div class="col-12">
+       <div class="card">
+           <div class="card-body">
+               <div class="row">
+                   <div class="col-8">
+                       <h4 class="card-title">Asignaciones </h4>
+                       <h6 class="card-subtitle">Asignaciones de Empleado</h6>
+                   </div>
+                   <div class="col">
+                       <div class="text-right">
+                           <button class="btn btn-primary" routerLink="/nomina/asignacion/nuevo"
+                           >
+                               <i class="fa fa-hospital-o"></i>
+                               Crear Asignación
+                           </button>
+                       </div>
+                   </div>
+               </div>
+              
+               <div class="table-responsive">
+                   <table class="table table-bordered">
+                       <thead>
+                           <tr>
+                               <th>Empleado</th>
+                               <th>Salario Cotizable TSS</th>
+                               <th>Otras Remuneraciones</th>
+                               <th>Ingreso Exento de ISR</th>
+                               <th>Otro Reembolso</th>
+                               <th>Total Asignaciones</th>
+                               <th class="text-nowrap">Acciones</th>
+                           </tr>
+                       </thead>
+                       <tbody>
+                           <tr *ngFor="let item of asignWork1">
+                               <td>{{item.nombre}}</td>
+                               <td>{{item.salarioCotizableTSS | number:'1.2-2'}}</td>
+                               <td>{{item.otrasRemuneraciones | number:'1.2-2'}}</td>
+                               <td>{{item.ingresosExentoISR   | number:'1.2-2'}}</td>
+                               <td>{{item.otroReembolso       | number:'1.2-2'}}</td>
+                               <td>{{item.totalAsignacion     | number:'1.2-2'}}</td>
+    
+                               <td class="text-nowrap text-center">
+                                   <a [routerLink]="['/nomina/asignacion', item._id]"
+                                      data-toggle="tooltip"
+                                      data-original-title="Editar">
+                                       <i class="fa fa-pencil text-inverse m-r-10"></i> 
+                                   </a>
+                                   <a class="cursor" 
+                                      data-toggle="tooltip" 
+                                      (click)="eliminarAsignacion(item._id)"
+                                      data-original-title="Borrar"
+                                      > 
+    
+                                      <i class="fa fa-close text-danger"></i>
+                                   </a>
+                               </td>
+                           </tr>
+                           
+                       </tbody>
+                   </table>
+    
+               <button class="btn btn-secundary">Anteriores</button>
+               &nbsp;
+               <button class="btn btn-secundary">Siguientes</button>
+               </div>
+           </div>
+       </div>
+    </div>
+    
+    </div>
+    

@@ -1,0 +1,135 @@
+<div class="row">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-body">
+                <form class="form p-t-20" [formGroup]="apartamentoForm" (ngSubmit)="guardarApartamento()">
+                    <!--  -->
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Bloque</label>
+                        <div class="input-group">
+                            <select class="form-control" formControlName="idbloque">
+
+                                <option value="">Seleccione un Bloque </option>
+                                <option *ngFor="let bloque of bloques" [value]="bloque._id">
+                                    {{bloque.codigo}}
+                                </option>
+                            </select>
+                        </div>
+                    </div>
+                    <!--  -->
+                    <div class="form-group">
+                        <label for="exampleInputuname">Cuota Asignada</label>
+                        <div class="input-group">
+                            <div class="input-group-addon"><i class="ti-money"></i></div>
+                            <input type="number" class="form-control" placeholder="Cuota" [value]="cuotaAsignada"
+                                readonly>
+                        </div>
+                    </div>
+                    <!--  -->
+                    <div class="form-group">
+                        <label for="exampleInputuname">Código</label>
+                        <div class="input-group">
+                            <div class="input-group-addon"><i class="ti-tag"></i></div>
+                            <input type="text" class="form-control" placeholder="codigo" formControlName="codigo">
+                        </div>
+                        <div class="text-danger">
+                            <span>El Código <strong> es obligatorio</strong> </span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputuname">Planta</label>
+                        <div class="input-group">
+                            <!-- <div class="input-group-addon"><i class="ti-user"></i></div>
+                            <input type="text" class="form-control" placeholder="planta" formControlName="planta"> -->
+                            <select class="form-control" formControlName="planta">
+                                <option value="Nivel I">Nivel I</option>
+                                <option value="Nivel II">Nivel II</option>
+                                <option value="Nivel III">Nivel III</option>
+                                <option value="Nivel IV">Nivel IV</option>
+                            </select>
+                        </div>
+                    </div>
+                    <!--  -->
+                    <div class="form-group">
+                        <label for="exampleInputuname">Monto adeudado</label>
+                        <div class="input-group">
+                            <div class="input-group-addon"><i class="ti-money"></i></div>
+                            <input type="number" class="form-control" formControlName="saldomantenimiento">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Propietario</label>
+                        <div class="input-group">
+                            <select class="form-control" formControlName="idpropietario">
+
+                                <option value="">Seleccione un Propietario </option>
+                                <option *ngFor="let propietario of propietarios" [value]="propietario._id">
+                                    {{propietario.nombre}}
+                                </option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputuname">Fecha Útima Cuota</label>
+                        <div class="input-group">
+                            <div class="input-group-addon"><i class="ti-calendar"></i></div>
+                            <input type="text" class="form-control" formControlName="fechaultimacuota">
+
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputuname">Habitado por:</label>
+                        <div class="input-group">
+                            <select class="form-control" formControlName="habitado">
+                                <option value="Propietario">Propietario</option>
+                                <option value="Inquilino">Inquilino</option>
+                                <option value="Vacío">Vacío</option>
+                            </select>
+                            <!-- <div class="input-group-addon"><i class="ti-money"></i></div>
+                            <input type="text" class="form-control" placeholder="Estado" formControlName="habitado"> -->
+                        </div>
+                    </div>
+                    <button class="btn btn-danger btn-lg float-start" routerLink="/nomina/apartamentos">
+                        <i class="fa fa-ban"></i>
+                        Cancelar
+                    </button>
+                    <button type="submit" class="btn btn-success btn-lg float-right"
+                        [disabled]="apartamentoForm.invalid">
+                        <i class="fa fa-save"></i>
+                        Guardar
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+<!-- imagen usuario -->
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Avatar</h4>
+                <h6 class="card-subtitle">Imagen del usuario</h6>
+
+                <div class="text-center">
+                    <!-- <img *ngIf="!imgTemp" [src]="usuario.imagenUrl" class="img-avatar">
+                    <img *ngIf="imgTemp"  [src]="imgTemp" class="img-avatar"> -->
+                </div>
+
+                <input type="file">
+
+                <br>
+                <br>
+
+                <button type="button" class="btn btn-success btn-block waves-effect waves-light m-r-10">
+                    <i class="fa fa-save"></i>
+                    Cambiar imagen
+                </button>
+
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<!-- <button type="button" class="btn btn-inverse">Cancel</button>    -->

@@ -1,0 +1,70 @@
+
+<div class="row">
+
+    <div class="col-12">
+       <div class="card">
+           <div class="card-body">
+               <div class="row">
+                   <div class="col-8">
+                       <h4 class="card-title">Deducciones </h4>
+                       <h6 class="card-subtitle">Deducciones de Empleado</h6>
+                   </div>
+                   <div class="col">
+                       <div class="text-right">
+                           <button class="btn btn-primary" routerLink="/nomina/deduccion/nuevo">
+                               <i class="fa fa-hospital-o"></i>
+                               Crear Deducción
+                           </button>
+                       </div>
+                   </div>
+               </div>
+              
+               <div class="table-responsive">
+                   <table class="table table-bordered">
+                       <thead>
+                           <tr>
+                               <th>Empleado</th>
+                               <th>Retenciones de Ley</th>
+                               <th>Otras Deducciones</th>
+                               <th>Total Deducción</th>
+                               <th class="text-nowrap">Acciones</th>
+                           </tr>
+                       </thead>
+                       <tbody>
+                           <tr *ngFor="let item of deducWork" >
+                               <td>{{item.nombre}}</td>
+                               <td>{{item.retencionesLey   | number:'1.2-2' }}</td>
+                               <td>{{item.otrasDeducciones | number:'1.2-2' }}</td>
+                               <td>{{item.totalDeducciones | number:'1.2-2' }}</td>
+                               
+                               <td class="text-nowrap text-center">
+                                   <a [routerLink]="['/nomina/deduccion', item._id]"
+                                      data-toggle="tooltip"
+                                      data-original-title="Editar">
+                                       <i class="fa fa-pencil text-inverse m-r-10"></i> 
+                                   </a>
+                                   <a class="cursor" 
+                                      data-toggle="tooltip" 
+                                      (click)="eliminarDeduccion(item._id)"
+                                      data-original-title="Borrar"
+                                      > 
+     
+                                      <i class="fa fa-close text-danger"></i>
+                                   </a>
+                               </td>
+                           </tr>
+                            
+                       </tbody>
+                   </table>
+     
+               <button class="btn btn-secundary">Anteriores</button>
+               &nbsp;
+               <button class="btn btn-secundary" (click)="calcISR(65863)">Siguientes</button>
+               </div>
+           </div>
+       </div>
+    </div>
+    
+    </div>
+    
+

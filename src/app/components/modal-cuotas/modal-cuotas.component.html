@@ -1,0 +1,58 @@
+<div class="fondo-modal-apartamento " [class.oculto]="_modalCuotasService.ocultarModal">
+
+  <div class="modal fade show" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel1"
+    style="display: block; padding-right: 17px">
+
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title" id="exampleModalLabel1">Cuotas del Apartamento: {{apartamento}}</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="cerrarModal()">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <div class="table-responsive">
+          <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th>No.</th>
+                <th>Fecha</th>
+                <th>Monto</th>
+                <th>Saldo</th>
+                <th>Señal</th>
+
+                <!-- <th>Fecha Sal</th> -->
+                <!-- <th class="text-nowrap">Acciones</th> -->
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let cuota of cuotas; let i = index">
+                <td>{{ i + 1 }}</td>
+                <td>{{ cuota.fechacuota | date}}</td>
+                <td>{{ cuota.monto | number: "1.2-2" }}</td>
+                <td>{{ cuota.saldo | number: "1.2-2" }}</td>
+                <td>{{ cuota.senal }}</td>
+
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="text-aling:center">
+          total {{totalSaldo | number: "1.2-2" }}
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal" (click)="calcularTotales(cuotas)">
+            <!-- (click)="cerrarModal()" -->
+            Total
+          </button>
+          <button type="button" 
+                  class="btn btn-primary"
+                  (click)="reporte()">Imprimir
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,120 @@
+<div class="row">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-body">
+                <!-- <h4 class="card-title">Mi perfil de usuario</h4>
+                <h6 class="card-subtitle">Ajustes</h6> -->
+                
+                <form class="form p-t-20"
+                      [formGroup]="formParametro"
+                      (ngSubmit)="crearParametro()">
+
+                    <div class="form-group">
+                        <label for="exampleInputuname">Salario Mínimo Promedio</label>
+                        <div class="input-group">
+                            <div class="input-group-addon"><i class="ti-user"></i></div>
+                            <input type="number" 
+                                  class="form-control"
+                                  placeholder="Salario Mínimo Promedio"
+                                  formControlName="salarioMinPromedio">
+                        </div> 
+                        <div class="text-danger">
+                            <span>El SMP <strong> es obligatorio</strong> </span>
+                        </div>  
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputuname">SFS-Tasa Empleado</label>
+                        <div class="input-group">
+                            <div class="input-group-addon"><i class="ti-user"></i></div>
+                            <input type="number" 
+                                  class="form-control"
+                                  placeholder="Seguro Familiar de Salud"
+                                  formControlName="SFStasaEmpleado">
+                        </div> 
+ 
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputuname">SFS-Tasa Patrón</label>
+                        <div class="input-group">
+                            <div class="input-group-addon"><i class="ti-user"></i></div>
+                            <input type="number" 
+                                  class="form-control"
+                                  placeholder="Tasa Patrón"
+                                  formControlName="SFStasaPatron">
+                        </div> 
+ 
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputuname">SVDS-Tasa Empleado</label>
+                        <div class="input-group">
+                            <div class="input-group-addon"><i class="ti-user"></i></div>
+                            <input type="number" 
+                                  class="form-control"
+                                  placeholder="Tasa Empleado"
+                                  formControlName="SVDStasaEmpleado">
+                        </div> 
+                        <div class="text-danger">
+                            <span>El Límite Inferior<strong> es obligatorio</strong> </span>
+                        </div>  
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputuname">SVDS-Tasa Patrón</label>
+                        <div class="input-group">
+                            <div class="input-group-addon"><i class="ti-user"></i></div>
+                            <input type="number" 
+                                  class="form-control"
+                                  placeholder="Tasa Patrón"
+                                  formControlName="SVDStasaPatron">
+                        </div> 
+                        <div class="text-danger">
+                            <span>El Límite Inferior<strong> es obligatorio</strong> </span>
+                        </div>  
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputuname">SRL</label>
+                        <div class="input-group">
+                            <div class="input-group-addon"><i class="ti-user"></i></div>
+                            <input type="number" 
+                                  class="form-control"
+                                  placeholder="Tasa Patrón"
+                                  formControlName="seguroRiesgoLaboral">
+                        </div> 
+                        <div class="text-danger">
+                            <span>El Límite Inferior<strong> es obligatorio</strong> </span>
+                        </div>  
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputuname">Salario Min TSS</label>
+                        <div class="input-group">
+                            <div class="input-group-addon"><i class="ti-user"></i></div>
+                            <input type="number" 
+                                  class="form-control"
+                                  placeholder="Salario Min TSS"
+                                  formControlName="salarioMinTSS">
+                        </div> 
+                        <div class="text-danger">
+                            <span>El Límite Inferior<strong> es obligatorio</strong> </span>
+                        </div>  
+                    </div>
+                    
+                    <button  
+                        class="btn btn-danger btn-lg float-start"
+                        routerLink="/nomina/parametros">
+                        <i class="fa fa-cancel"></i>
+                            Volver
+                    </button>
+                    <button type="submit" 
+                            class="btn btn-success btn-lg float-right"
+                            [disabled]="formParametro.invalid">
+                        <i class="fa fa-save"></i>
+                        Guardar
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- <button type="button" class="btn btn-inverse">Cancel</button>    -->
+
+

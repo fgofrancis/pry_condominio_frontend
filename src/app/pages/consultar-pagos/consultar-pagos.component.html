@@ -1,0 +1,152 @@
+<div class="row">
+    <div class="col-6">
+        <div class="card">
+            <h1>Apartamento</h1>
+            <div class="card-body">
+                <form class="form p-t-20" [formGroup]="apartamentoForm" (ngSubmit)="guardarApartamento()">
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Apartamentos</label>
+                        <div class="input-group">
+                            <select  class="form-control" formControlName="codigo">
+                                <option [value]="1">
+                                    Ninguno..
+                                </option>
+                                <option *ngFor="let apartamento of apartamentos" [value]="apartamento._id">
+                                    {{apartamento.codigo}}
+                                </option>
+                            </select>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="col-6">
+        <div class="card">
+            <h1>Fecha  pago</h1>
+            <div class="card-body">
+                <div class="form-group">
+                    <div class="input-group">
+                        <input type="date" class="form-control" (change)="capturarFechaOnChange($event)"
+                               [(ngModel)]="fechapago"/> 
+                               <!-- [valueAsDate]="fechapago"/> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Pagos -->
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-8">
+                        <h4 class="card-title">Pagos </h4>
+                        <h6 class="card-subtitle">Pagos registrados</h6>
+                    </div>
+                </div>
+
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>No.</th>
+                                <th>Apartamento</th>
+                                <th>Fecha</th>
+                                <th>Monto</th>
+                                <th>Forma de pago</th>
+                                <th class="text-nowrap">Detalle</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let pago of pagos; let i =index"> 
+                                <td>{{i +1 }}</td>
+                                <td>{{pago.idapartamento.codigo}}</td>
+                                <td>{{pago.fechageneracion |date }}</td>
+                                <td>{{pago.monto | number:'1.2-2'}}</td>
+                                <td>{{pago.idformapago.formapago }}</td>
+                                <td class="text-nowrap text-center">
+                                    <a class="cursor" 
+                                        data-toggle="tooltip" 
+                                        data-original-title="Ver"
+                                        (click)="buscarDetallePago(pago)"> 
+                                        <!-- <i class='fa fa-print'></i> -->
+                                        <i class="fa fa-search" aria-hidden="true"></i>
+                                    </a>
+                                    <a class="cursor" 
+                                        data-toggle="tooltip" 
+                                        data-original-title="Ver"
+                                        (click)="reporte(pago)"> 
+                                        <!-- <i class='fa fa-print'></i> -->
+                                        <i class="fa fa-print" aria-hidden="true"></i>
+                                    </a>
+
+                                </td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+
+                    <button class="btn btn-secundary">Anteriores</button>
+                    &nbsp;
+                    <button class="btn btn-secundary">Siguientes</button>
+                    <div class="col">
+                        <div *ngIf="isPagoHabilitado" class="text-right">
+                            <button class="btn btn-primary" (click)="reporteGeneral()">
+                                <i class="fa fa-print" aria-hidden="true"></i>
+                                Imprimir Pagos
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<!-- Detalles del pago -->
+<div class="row" *ngIf="isVerdetallepago">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-8">
+                        <h4 class="card-title">Detalles </h4>
+                        <h6 class="card-subtitle">Detalles del Pago</h6>
+                    </div>
+                </div>
+
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>No.</th>
+                                <th>Fecha cuota</th>
+                                <th>Fecha pago</th>
+                                <th>Monto Cuota</th>
+                                <th>Pago aplicado</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let pagodetalle of pagodetalles; let i =index"> 
+                                <td>{{i +1 }}</td>
+                                <td>{{pagodetalle.idcuota.fechacuota |date }}</td>
+                                <td>{{pagodetalle.fechageneracion |date }}</td>
+                                <td>{{pagodetalle.idcuota.monto | number:'1.2-2' }}</td>
+                                <td>{{pagodetalle.monto | number:'1.2-2' }}</td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+
+                    <button class="btn btn-secundary">Anteriores</button>
+                    &nbsp;
+                    <button class="btn btn-secundary">Siguientes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

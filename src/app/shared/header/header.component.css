@@ -1,0 +1,14 @@
+/* Esto no funciona, tube q poner eso en el style.ccs general */
+.text-center{
+    text-transform: uppercase;
+    font-size:30px; 
+  /*  background-color: aqua; */
+   /* float: left;*/
+    align-content: center;
+    font-weight: bold;
+}
+.cia {
+  font-size: 35px;
+  color: white;
+  /* padding: 10px; */
+}

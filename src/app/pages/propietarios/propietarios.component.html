@@ -1,0 +1,120 @@
+<div class="row animated fadIn fast">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <input type="text"
+                class="form-control"
+                placeholder="Buscar x nombre..."
+                (keyup)="buscar(txtTermino.value)"
+                #txtTermino/>
+
+            </div>
+        </div>
+    </div>
+</div> 
+
+<div class="row animated fadIn fast"
+     *ngIf="cargando">
+
+    <div class="col-12">
+        <div class="alert alert-info text-center">
+            <h4 class="alert-heading">Cargando</h4>
+            <i class="fa fa-spin fa-refresh fa-2x"></i>
+            <p class="mb-0">Por favor espere</p>
+        </div>
+    </div>
+</div>
+
+<div class="row"
+     *ngIf="!cargando">
+
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-8">
+                        <h4 class="card-title">Propietarios ({{totalPropietario}}) - {{pagina}} </h4>
+                        <h6 class="card-subtitle">Propietarios registrados en mi aplicación</h6>
+                    </div>
+                    <div class="col">
+                        <div class="text-right">
+                            <button class="btn btn-primary" routerLink="/nomina/propietario/nuevo">
+                                <i class="fa fa-hospital-o"></i>
+                                Crear propietario
+                            </button>
+                        </div>
+                    </div>
+                </div>
+               
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>No.</th>
+                                <th>Cedula</th>
+                                <th>Nombre</th>
+                                <th>Tel. Casa</th>
+                                <th>Tel. Célular</th>
+                                <th>Tel. Trabajo</th>
+                                <!-- <th>Fecha Sal</th> -->
+                                <th class="text-nowrap">Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let propietario of propietarios; let i = index">
+                                <td>{{i+1}}</td>
+                                <td>{{propietario.identificacion}}</td>
+                                <td>{{propietario.nombre}}</td>
+                                <td>{{propietario.telefonos.casa }}</td>
+                                <td>{{propietario.telefonos.celular }}</td>
+                                <td>{{propietario.telefonos.trabajo }}</td>
+                                <!-- <td>{{propietario.cuota | number:'1.2-2'}}</td> -->
+                                <!-- <td></td> -->
+
+                                <td class="text-nowrap text-center">
+                                    <a [routerLink]="['/nomina/propietario', propietario._id]"
+                                       data-toggle="tooltip"
+                                       data-original-title="Editar">
+                                        <i class="fa fa-pencil text-inverse m-r-10"></i> 
+                                    </a>
+                                    <a class="cursor" 
+                                       data-toggle="tooltip" 
+                                       data-original-title="Borrar"
+                                       (click)="eliminarPropietario(propietario)"> 
+                                       <i class="fa fa-close text-danger"></i>
+                                    </a>
+
+                                    <a class="cursor" 
+                                       data-toggle="tooltip" 
+                                       data-original-title="Ver"
+                                       (click)="abrirModal(propietario)"> 
+                                       <i class='fa fa-cog'></i>
+                                       <!-- <i class='fa fa-print'></i> -->
+                                    </a>
+                                </td>
+                            </tr>
+                            
+                        </tbody>
+                    </table>
+
+                    <div *ngIf="txtTermino.value.length === 0">
+                        <button (click)="cambiarPagina(-5)" class="btn btn-secondary">Anteriores</button>
+                        &nbsp;
+                        <button (click)="cambiarPagina(5)" class="btn btn-secondary">Siguientes</button>
+                    </div>
+                    <div class="col">
+                        <div class="text-right">
+                            <button class="btn btn-primary" (click)="reporte()">
+                                <i class="fa fa-print" aria-hidden="true"></i>
+                                Generar Reporte
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div> 
+
+

@@ -1,0 +1,154 @@
+<div class="row">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-body">
+                <!-- <h4 class="card-title">Mi perfil de usuario</h4>
+                <h6 class="card-subtitle">Ajustes</h6> -->
+                 
+                <form class="form p-t-20"
+                      [formGroup]="formEmpleado"
+                      (ngSubmit)="crearEmpleado()">
+
+                    <div class="form-group">
+                        <label for="exampleInputuname">Primer nombre</label>
+                        <div class="input-group">
+                            <div class="input-group-addon"><i class="ti-user"></i></div>
+                            <input type="text" 
+                                  class="form-control"
+                                  placeholder="Primer nombre"
+                                  formControlName="name1">
+                        </div> 
+                        <div class="text-danger">
+                            <span>El primer nombre <strong> es obligatorio</strong> </span>
+                        </div>  
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputuname">Segundo nombre</label>
+                        <div class="input-group">
+                            <div class="input-group-addon"><i class="ti-user"></i></div>
+                            <input type="text" 
+                                  class="form-control"
+                                  placeholder="Segundo nombre"
+                                  formControlName="name2">
+                        </div> 
+ 
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputuname">Primer Apellido</label>
+                        <div class="input-group">
+                            <div class="input-group-addon"><i class="ti-user"></i></div>
+                            <input type="text" 
+                                  class="form-control"
+                                  placeholder="Primer apellido"
+                                  formControlName="apell1">
+                        </div> 
+                        <div class="text-danger">
+                            <span>El primer apellido<strong> es obligatorio</strong> </span>
+                        </div>  
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputuname">Segundo Apellido</label>
+                        <div class="input-group">
+                            <div class="input-group-addon"><i class="ti-user"></i></div>
+                            <input type="text" 
+                                  class="form-control"
+                                  placeholder="Segundo Apellido"
+                                  formControlName="apell2">
+                        </div> 
+
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Identificación</label>
+                        <div class="input-group">
+                            <div class="input-group-addon"><i class="ti-email"></i></div>
+                            <input type="text"
+                                   class="form-control"
+                                   placeholder="Identificación"
+                                   formControlName="identificacion">
+                        </div>
+                        <div class="text-danger">
+                            
+                            <span>La Identificación<strong> es obligatoria</strong> </span>
+                        </div> 
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Fecha Ingreso</label>
+                        <div class="input-group">
+                            <div class="input-group-addon"><i class="ti-world"></i></div>
+                            <input type="date"
+                                   class="form-control"
+                                   placeholder="Fecha Ingreso"
+                                   formControlName="fechaIngreso">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Salario</label>
+                        <div class="input-group">
+                            <div class="input-group-addon"><i class="ti-world"></i></div>
+                            <input type="number"
+                                   class="form-control"
+                                   placeholder="Salario"
+                                   formControlName="salario">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Compañía</label>
+                        <div class="input-group">
+                            <select class="form-control"
+                                    formControlName="companiaID">
+                                    
+                                <option value="">Seleccione un Compañía </option>
+                                <option *ngFor="let compania of companias" 
+                                        [value]="compania._id">
+                                        {{compania.name}} 
+                                </option>
+                            </select>
+                        </div>
+                    </div>
+                    <button  
+                        class="btn btn-danger btn-lg float-start"
+                        routerLink="/nomina/empleado">
+                        <i class="fa fa-cancel"></i>
+                            Volver
+                    </button>
+                    <button type="submit" 
+                            class="btn btn-success btn-lg float-right"
+                            [disabled]="formEmpleado.invalid">
+                        <i class="fa fa-save"></i>
+                        Guardar
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Avatar</h4>
+                <h6 class="card-subtitle">Imagen del usuario</h6>
+
+                <div class="text-center">
+                    <!-- <img *ngIf="!imgTemp" [src]="usuario.imagenUrl" class="img-avatar">
+                    <img *ngIf="imgTemp"  [src]="imgTemp" class="img-avatar"> -->
+                </div>
+
+                <input type="file">
+
+                <br>
+                <br>
+
+                <button type="button"
+                        class="btn btn-success btn-block waves-effect waves-light m-r-10">
+                    <i class="fa fa-save"></i>
+                    Cambiar imagen
+                </button>
+
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<!-- <button type="button" class="btn btn-inverse">Cancel</button>    -->

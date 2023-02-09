@@ -1,0 +1,61 @@
+/* You can add global styles to this file, and also import other style files */
+
+#themecolors .selector, .cursor {
+    cursor:pointer;
+}
+
+#google-btn{
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+.img-avatar {
+    height: 200px;
+    width: 150px;
+}
+.w100 {
+    width: 100px;
+}
+.w125 {
+    width: 125px;
+}
+.avatar{
+    border-radius: 100%;
+    width: 50px;
+}
+
+.oculto{
+    display: none;
+}
+
+.fondo-modal-imagen {
+    background-color: rgba(0, 0, 0, 0.4);
+    height: 100%;
+    left: 0px;
+    position: fixed;
+    top: 0px;
+    width: 100%;
+    z-index: 9999;
+}   
+.text-danger{
+    margin-bottom: 0%;
+    text-transform: capitalize;
+}
+
+.title-f{
+    color: blue;
+}
+.oculto{
+    display: none;
+}
+
+.fondo-modal-apartamento{
+    background-color: rgba(0, 0, 0, 0.4);
+    left: 0px;
+    height: 100%;
+    position: fixed;
+    top: 0px;
+    width: 100%;
+    z-index: 999;
+}

@@ -1,0 +1,73 @@
+
+<div class="row">
+
+<div class="col-12">
+   <div class="card">
+       <div class="card-body">
+           <div class="row">
+               <div class="col-8">
+                   <h4 class="card-title">Escala </h4>
+                   <h6 class="card-subtitle">Escala Salarial correspondiente al año 2022</h6>
+               </div>
+               <div class="col">
+                   <div class="text-right">
+                       <button class="btn btn-primary" routerLink="/nomina/escala/nuevo"
+                       >
+                           <i class="fa fa-hospital-o"></i>
+                           Crear escala
+                       </button>
+                   </div>
+               </div>
+           </div>
+          
+           <div class="table-responsive">
+               <table class="table table-bordered">
+                   <thead>
+                       <tr>
+                           <th>Año</th>
+                           <th>Renglon</th>
+                           <th>Desde</th>
+                           <th>Hasta</th>
+                           <th>Tasa</th>
+                           <th>Constante</th>
+                           <th class="text-nowrap">Acciones</th>
+                       </tr>
+                   </thead>
+                   <tbody>
+                       <tr *ngFor="let escala of escalas">
+                           <td>{{escala.year}}</td>
+                           <td> {{escala.renglon}}</td>
+                           <td>{{escala.desde | number:'1.2-2'}}</td>
+                           <td>{{escala.hasta | number:'1.2-2'}}</td>
+                           <td>{{escala.tasa | number:'1.2-2'}}</td>
+                           <td>{{escala.constante | number:'1.2-2'}}</td>
+
+                           <td class="text-nowrap text-center">
+                               <a [routerLink]="['/nomina/escala', escala._id]"
+                                  data-toggle="tooltip"
+                                  data-original-title="Editar">
+                                   <i class="fa fa-pencil text-inverse m-r-10"></i> 
+                               </a>
+                               <a class="cursor" 
+                                  data-toggle="tooltip" 
+                                  (click)="borrarRenglon(escala)"
+                                  data-original-title="Borrar"
+                                  > 
+
+                                  <i class="fa fa-close text-danger"></i>
+                               </a>
+                           </td>
+                       </tr>
+                       
+                   </tbody>
+               </table>
+
+           <button class="btn btn-secundary">Anteriores</button>
+           &nbsp;
+           <button class="btn btn-secundary">Siguientes</button>
+           </div>
+       </div>
+   </div>
+</div>
+
+</div>

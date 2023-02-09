@@ -1,0 +1,92 @@
+<div>
+    <nav class="nav">
+        <div class="container">
+            <a href="/" class="nav-link">Contabilidad General</a>
+        </div>
+    </nav>
+    <div class="container">
+        <div class="row">
+            <div class="col-5">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Cliente</h5>
+                        <form (ngSubmit)="enviar()">
+                            <div class="row">
+                                <div class="form-group col-12">
+                                    <input type="text" name="nombre" 
+                                           class="form-control" placeholder="Nombre"
+                                           [(ngModel)]="dato.nombre"/>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-5">
+                                    <input type="text" name="edad" 
+                                           class="form-control" placeholder="Edad"
+                                           [(ngModel)]="dato.edad"/>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-12">
+                                    <input type="text" name="telefono"
+                                           class="form-control" placeholder="Telefono"
+                                           [(ngModel)]="dato.telefono"/>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-12">
+                                    <input type="text" name="empresa" 
+                                           class="form-control" placeholder="Empresa"
+                                           [(ngModel)]="dato.empresa"/>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-6">
+                                    <button type="submit" class="btn btn-primary" >Enviar</button>
+                                </div>
+                                <div class="col-6">
+                                    <div class="alert alert-danger" role="alert">
+                                        Cliente enviado
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-7">
+                <div class="card">
+                    <div class="card-body">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Nombre</th>
+                                    <th>Edad</th>
+                                    <th>Teléfono</th>
+                                    <th>Empresa</th>
+                                    <th>Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let data of datos">
+                                    <td>{{data.nombre}}</td>
+                                    <td>{{data.edad}}</td>
+                                    <td>{{data.telefono}}</td>
+                                    <td>{{data.empresa}}</td>
+                                    <td class="row">
+                                        <button class="btn btn-primary">
+                                            <i class="small material-icons edit">edit</i>
+                                        </button>
+                                        <button class="btn btn-primary ml-1" >
+                                            <i class="small material-icons">del</i>
+                                        </button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+               
+            </div>
+        </div>
+    </div>
+</div>

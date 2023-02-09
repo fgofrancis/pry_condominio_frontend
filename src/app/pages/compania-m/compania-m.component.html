@@ -1,0 +1,112 @@
+<div class="row">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-body">
+                <!-- <h4 class="card-title">Mi perfil de usuario</h4>
+                <h6 class="card-subtitle">Ajustes</h6> -->
+                
+                <form class="form p-t-20"
+                      [formGroup]="formCompania"
+                      (ngSubmit)="grabarCia()">
+
+                    <div class="form-group">
+                        <label for="exampleInputuname">Nombre</label>
+                        <div class="input-group">
+                            <div class="input-group-addon"><i class="ti-user"></i></div>
+                            <input type="text" 
+                                  class="form-control"
+                                  placeholder="Nombre compañia"
+                                  formControlName="name">
+                            
+                        </div> 
+                        <div class="text-danger"
+                            *ngIf="formCompania.get('name')?.hasError('required') && formCompania.get('name')?.touched">
+                            <span>El nombre Compañía<strong> es obligatorio</strong> </span>
+                        </div>  
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">RNC</label>
+                        <div class="input-group">
+                            <div class="input-group-addon"><i class="ti-email"></i></div>
+                            <input type="text"
+                                   class="form-control"
+                                   placeholder="Enter rnc"
+                                   formControlName="rnc" >
+                        </div>
+                        <div class="text-danger"
+                            *ngIf="formCompania.get('rnc')?.hasError('required') && formCompania.get('rnc')?.touched">
+                            <span>El RNC<strong> es obligatorio</strong> </span>
+                        </div> 
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Teléfono</label>
+                        <div class="input-group">
+                            <div class="input-group-addon"><i class="fa fa-phone"></i></div>
+                            <input type="text"
+                                   class="form-control"
+                                   placeholder="Enter telefono"
+                                   formControlName="telefono">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Email</label>
+                        <div class="input-group">
+                            <div class="input-group-addon"><i class="ti-world"></i></div>
+                            <input type="email"
+                                   class="form-control"
+                                   placeholder="Enter email"
+                                   formControlName="email">
+                        </div>
+                    </div>
+                   
+                    
+                        <button  
+                            class="btn btn-danger btn-lg float-start"
+                            routerLink="/nomina/compania">
+                            <i class="fa fa-cancel"></i>
+                                Volver
+                        </button>
+                        <button type="submit" 
+                                class="btn btn-success btn-lg float-right"
+                                [disabled]="formCompania.invalid">
+                            <i class="fa fa-save"></i>
+                            Guardar
+                        </button>
+    
+
+                    
+                    
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Avatar</h4>
+                <h6 class="card-subtitle">Imagen del usuario</h6>
+
+                <div class="text-center">
+                    <!-- <img *ngIf="!imgTemp" [src]="usuario.imagenUrl" class="img-avatar">
+                    <img *ngIf="imgTemp"  [src]="imgTemp" class="img-avatar"> -->
+                </div>
+
+                <input type="file">
+
+                <br>
+                <br>
+
+                <button type="button"
+                        class="btn btn-success btn-block waves-effect waves-light m-r-10">
+                    <i class="fa fa-save"></i>
+                    Cambiar imagen
+                </button>
+
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<!-- <button type="button" class="btn btn-inverse">Cancel</button>    -->

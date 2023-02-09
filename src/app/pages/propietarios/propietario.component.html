@@ -1,0 +1,143 @@
+<div class="row">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-body">
+                <!-- <h4 class="card-title">Mi perfil de usuario</h4>
+                <h6 class="card-subtitle">Ajustes</h6> -->
+                 
+                <form class="form p-t-20"
+                      [formGroup]="propietarioForm"
+                      (ngSubmit)="guardarPropietario()">
+
+                    <div class="form-group">
+                        <label for="exampleInputuname">Identificación</label>
+                        <div class="input-group">
+                            <div class="input-group-addon"><i class="ti-tag"></i></div>
+                            <input type="text" 
+                                  class="form-control"
+                                  placeholder="identificación"
+                                  formControlName="identificacion">
+                        </div> 
+                        <div class="text-danger">
+                            <span>La Identificacion <strong> es obligatorio</strong> </span>
+                        </div>  
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputuname">Nombre</label>
+                        <div class="input-group">
+                            <div class="input-group-addon"><i class="ti-user"></i></div>
+                            <input type="text" 
+                                  class="form-control"
+                                  placeholder="nombre"
+                                  formControlName="nombre">
+                        </div> 
+ 
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputuname">Tel. Casa</label>
+                        <div class="input-group">
+                            <div class="input-group-addon"><i class="ti-user"></i></div>
+                            <input type="phone" 
+                                  class="form-control"
+                                  placeholder="Tel. casa"
+                                  formControlName="casa">
+                        </div> 
+                        <div class="text-danger">
+                            <span>La ubicación<strong> es obligatoria</strong> </span>
+                        </div>  
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputuname">Tel. Móvil</label>
+                        <div class="input-group">
+                            <div class="input-group-addon"><i class="ti-money"></i></div>
+                            <input type="text" 
+                                  class="form-control"
+                                  placeholder="Tel. Celular"
+                                  formControlName="celular">
+                        </div> 
+
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputuname">Tel. Trabajo</label>
+                        <div class="input-group">
+                            <div class="input-group-addon"><i class="ti-money"></i></div>
+                            <input type="text" 
+                                  class="form-control"
+                                  placeholder="Tel. Trabajo"
+                                  formControlName="trabajo">
+                        </div> 
+
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputuname">Direccion</label>
+                        <div class="input-group">
+                            <div class="input-group-addon"><i class="ti-money"></i></div>
+                            <input type="text" 
+                                  class="form-control"
+                                  placeholder="Tel. Direccion"
+                                  formControlName="direccion">
+                        </div> 
+
+                    </div>
+
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Compañía</label>
+                        <!-- <div class="input-group">
+                            <select class="form-control"
+                                    formControlName="companiaID">
+                                    
+                                <option value="">Seleccione un Compañía </option>
+                                <option *ngFor="let compania of companias" 
+                                        [value]="compania._id">
+                                        {{compania.name}} 
+                                </option>
+                            </select>
+                        </div> -->
+                    </div>
+                    <button  
+                        class="btn btn-danger btn-lg float-start"
+                        routerLink="/nomina/propietarios">
+                        <i class="fa fa-cancel"></i>
+                            Volver
+                    </button>
+                    <button type="submit" 
+                            class="btn btn-success btn-lg float-right"
+                            [disabled]="propietarioForm.invalid">
+                        <i class="fa fa-save"></i>
+                        Guardar
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Avatar</h4>
+                <h6 class="card-subtitle">Imagen del usuario</h6>
+
+                <div class="text-center">
+                    <!-- <img *ngIf="!imgTemp" [src]="usuario.imagenUrl" class="img-avatar">
+                    <img *ngIf="imgTemp"  [src]="imgTemp" class="img-avatar"> -->
+                </div>
+
+                <input type="file">
+
+                <br>
+                <br>
+
+                <button type="button"
+                        class="btn btn-success btn-block waves-effect waves-light m-r-10">
+                    <i class="fa fa-save"></i>
+                    Cambiar imagen
+                </button>
+
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<!-- <button type="button" class="btn btn-inverse">Cancel</button>    -->
+

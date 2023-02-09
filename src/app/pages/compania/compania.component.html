@@ -1,0 +1,130 @@
+<div class="row animated fadIn fast">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <input type="text"
+                class="form-control"
+                placeholder="Buscar compañía..."
+                (keyup)="buscar(txtTermino.value)"
+                #txtTermino/>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row animated fadIn fast"
+     *ngIf="cargando">
+
+    <div class="col-12">
+        <div class="alert alert-info text-center">
+            <h4 class="alert-heading">Cargando</h4>
+            <i class="fa fa-spin fa-refresh fa-2x"></i>
+            <p class="mb-0">Por favor espere</p>
+        </div>
+    </div>
+</div>
+
+<div class="row"
+     *ngIf="!cargando">
+ 
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-8">
+                        <h4 class="card-title">Compañías ({{companias.length}})</h4>
+                        <h6 class="card-subtitle">Compañías registradas en mi aplicación</h6>
+                    </div>
+                    <div class="col">
+                        <div class="text-right">
+                            <button class="btn btn-primary" routerLink="/nomina/companiaM"
+                            >
+                                <i class="fa fa-hospital-o"></i>
+                                Crear compañía
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th class="w100">Foto</th>
+                                <th>Nombre</th>
+                                <th>RNC</th>
+                                <th>Teléfono</th>
+                                <th>Email</th>
+                                <th>Fecha Reg</th>
+                                <th class="text-nowrap">Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let compania of companias">
+                                <td class="text-center">
+                                    <img [src]="compania.img | imagen:'companias'" 
+                                         [alt]="compania.name"
+                                         class="avatar cursor"
+                                         (click)="abrirModal(compania)">
+                                </td>
+                                <td>
+                                    <input type="text"
+                                           class="form-control"
+                                           placeholder="Nombre de la compañia"
+                                           [(ngModel)]="compania.name"/>
+                                </td>
+                                <td>
+                                    <input type="text"
+                                           class="form-control"
+                                           placeholder="RNC de la compañia"
+                                           [(ngModel)]="compania.rnc"/>
+                                </td>
+                                <td>
+                                    <input type="text"
+                                           class="form-control"
+                                           placeholder="Teléfono de la compañia"
+                                           [(ngModel)]="compania.telefono"/>
+                                </td>
+                                <td>
+                                    <input type="text"
+                                           class="form-control"
+                                           placeholder="email de la compañia"
+                                           [(ngModel)]="compania.email"/>
+                                </td>
+                                <td>
+                                    <input type="text"
+                                           class="form-control"
+                                           placeholder="Fecha registro compañía"
+                                           [(ngModel)]="compania.fechaRegistro"/>
+                                </td>
+
+                                <td class="text-nowrap text-center">        
+                                    <a (click)="guardarCambios(compania)" 
+                                       data-toggle="tooltip" 
+                                       class="cursor"
+                                       data-original-title="guardar"> 
+                                       <i class="fa fa-pencil text-inverse m-r-10"></i>
+                                    </a>
+                                    <a (click)="eliminarCia(compania)" 
+                                       data-toggle="tooltip"
+                                       class="cursor"
+                                       data-original-title="Borrar">
+                                        <i class="fa fa-close text-danger"></i> 
+                                    </a>
+                                </td>
+                            </tr>
+                            
+                        </tbody>
+                    </table>
+
+                <button class="btn btn-secundary">Anteriores</button>
+                &nbsp;
+                <button class="btn btn-secundary">Siguientes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+

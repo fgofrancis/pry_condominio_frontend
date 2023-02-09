@@ -1,0 +1,117 @@
+<div class="row">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-body">
+                <!-- <h4 class="card-title">Mi perfil de usuario</h4>
+                <h6 class="card-subtitle">Ajustes</h6> -->
+                
+                <form class="form p-t-20"
+                      [formGroup]="formEscala"
+                      (ngSubmit)="crearEscala()">
+
+                    <div class="form-group">
+                        <label for="exampleInputuname">Año</label>
+                        <div class="input-group">
+                            <div class="input-group-addon"><i class="ti-user"></i></div>
+                            <input type="number" 
+                                  class="form-control"
+                                  placeholder="Año"
+                                  formControlName="year">
+                        </div> 
+                        <div class="text-danger">
+                            <span>El Año <strong> es obligatorio</strong> </span>
+                        </div>  
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputuname">Renglón</label>
+                        <div class="input-group">
+                            <div class="input-group-addon"><i class="ti-user"></i></div>
+                            <input type="number" 
+                                  class="form-control"
+                                  placeholder="Renglon"
+                                  formControlName="renglon">
+                        </div> 
+ 
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputuname">Desde</label>
+                        <div class="input-group">
+                            <div class="input-group-addon"><i class="ti-user"></i></div>
+                            <input type="number" 
+                                  class="form-control"
+                                  placeholder="Límite Inferior"
+                                  formControlName="desde">
+                        </div> 
+                        <div class="text-danger">
+                            <span>El desde<strong> es obligatorio</strong> </span>
+                        </div>  
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputuname">Hasta</label>
+                        <div class="input-group">
+                            <div class="input-group-addon"><i class="ti-user"></i></div>
+                            <input type="number" 
+                                  class="form-control"
+                                  placeholder="Límite Superior"
+                                  formControlName="hasta">
+                        </div> 
+
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Tasa</label>
+                        <div class="input-group">
+                            <div class="input-group-addon"><i class="ti-email"></i></div>
+                            <input type="number"
+                                   class="form-control"
+                                   placeholder="Tasa"
+                                   formControlName="tasa">
+                        </div>
+                        <div class="text-danger">
+                            
+                            <span>La xx<strong> es obligatoria</strong> </span>
+                        </div> 
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Constante</label>
+                        <div class="input-group">
+                            <div class="input-group-addon"><i class="ti-world"></i></div>
+                            <input type="number"
+                                   class="form-control"
+                                   placeholder="Constante"
+                                   formControlName="constante">
+                        </div>
+                    </div>
+
+                    <!-- <div class="form-group">
+                        <label for="exampleInputEmail1">Compañía</label>
+                        <div class="input-group">
+                            <select class="form-control"
+                                    formControlName="companiaID">
+                                    
+                                <option value="">Seleccione un Compañía </option>
+                                <option ></option>
+
+                            </select>
+                        </div>
+                    </div> -->
+                    <button  
+                        class="btn btn-danger btn-lg float-start"
+                        routerLink="/nomina/escalaSalarial">
+                        <i class="fa fa-cancel"></i>
+                            Volver
+                    </button>
+                    <button type="submit" 
+                            class="btn btn-success btn-lg float-right"
+                            [disabled]="formEscala.invalid">
+                        <i class="fa fa-save"></i>
+                        Guardar
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- <button type="button" class="btn btn-inverse">Cancel</button>    -->
+
